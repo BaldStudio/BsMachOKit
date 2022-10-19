@@ -9,11 +9,11 @@
 #import "ViewController.h"
 #import <BsMachOKit/BsMachOKit.h>
 
-bs_macho_inject_data(a, "1");
-bs_macho_inject_data(b, "2");
-bs_macho_inject_data(c, "3");
-bs_macho_inject_data(d, 4);
-bs_macho_inject_data(e, 5);
+bs_macho_inject(a, "1");
+bs_macho_inject(b, "2");
+bs_macho_inject(c, "3");
+bs_macho_inject(d, "4");
+bs_macho_inject(e, "5");
 
 @interface ViewController ()
 

@@ -25,18 +25,18 @@ typedef struct {
     char *value;
 } BsMachOInjectData;
 
-#define bs_macho_anntation(_seg_, _sect_) \
-__attribute((used, section(_seg_ "," _sect_)))
+#define bs_macho_annotation(seg, sect) \
+__attribute((used, section(seg "," sect)))
 
-#define bs_macho_inject_struct_data(_seg_, _sect_, _key_, _value_) \
-bs_macho_anntation(_seg_, _sect_) \
+#define bs_macho_inject_kv(seg, sect, _key_, _value_) \
+bs_macho_annotation(seg, sect) \
 static const BsMachOInjectData __bs_macho_##_key_##_data = { \
     .key = #_key_,      \
-    .value = #_value_,  \
+    .value = _value_,  \
 }
 
-#define bs_macho_inject_data(_key_, _value_) \
-bs_macho_inject_struct_data(BS_INJ_SEG, BS_INJ_SECT, _key_, _value_)
+#define bs_macho_inject(key, value) \
+bs_macho_inject_kv(BS_INJ_SEG, BS_INJ_SECT, key, value)
 
 
 NS_ASSUME_NONNULL_END
