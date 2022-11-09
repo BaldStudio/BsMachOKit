@@ -41,6 +41,13 @@
 			remoteGlobalIDString = D27A8A1C25203F1A006A6125;
 			remoteInfo = BsMachOKit;
 		};
+		D2F2CA72291B50A10011ADD6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D27A8A1425203F1A006A6125 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D23FF0C525AD9B5200D755D9;
+			remoteInfo = BsMachOKitDemo;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -265,6 +272,7 @@
 			);
 			dependencies = (
 				D23FF0E725AD9C5600D755D9 /* PBXTargetDependency */,
+				D2F2CA73291B50A10011ADD6 /* PBXTargetDependency */,
 			);
 			name = BsMachOKitTests;
 			productName = BsMachOKitTests;
@@ -306,6 +314,7 @@
 					};
 					D23FF0DF25AD9C5600D755D9 = {
 						CreatedOnToolsVersion = 12.3;
+						TestTargetID = D23FF0C525AD9B5200D755D9;
 					};
 					D27A8A1C25203F1A006A6125 = {
 						CreatedOnToolsVersion = 11.7;
@@ -473,6 +482,11 @@
 			target = D27A8A1C25203F1A006A6125 /* BsMachOKit */;
 			targetProxy = D23FF2BF25ADBF1100D755D9 /* PBXContainerItemProxy */;
 		};
+		D2F2CA73291B50A10011ADD6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D23FF0C525AD9B5200D755D9 /* BsMachOKitDemo */;
+			targetProxy = D2F2CA72291B50A10011ADD6 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
@@ -573,6 +587,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BsMachOKitDemo.app/BsMachOKitDemo";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -598,6 +613,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BsMachOKitDemo.app/BsMachOKitDemo";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;

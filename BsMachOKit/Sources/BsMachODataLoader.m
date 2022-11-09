@@ -78,14 +78,13 @@
 + (NSArray *)loadDataByFrameworkNames:(NSArray *)frameworkNames
                               segment:(const char *)segmentName
                               section:(const char *)sectionName {
-    
     [self print:@"Prepare loading frameworks: %@", frameworkNames];
 
     NSMutableArray *result = [NSMutableArray array];
 
     for (NSString *name in frameworkNames) {
         u_long size = 0;
-        uintptr_t *mem = (uintptr_t *)getsectdatafromFramework([name UTF8String],
+        uintptr_t *mem = (uintptr_t *)getsectdatafromFramework(name.UTF8String,
                                                                segmentName,
                                                                sectionName,
                                                                &size);

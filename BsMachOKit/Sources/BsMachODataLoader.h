@@ -25,19 +25,23 @@ NS_ASSUME_NONNULL_BEGIN
     ]
 */
 
+typedef NSDictionary<NSString *, NSString *> * BsMachOInjectDataType;
+typedef NSArray<BsMachOInjectDataType> * BsMachOInjectDataResult;
+
 @interface BsMachODataLoader : NSObject
 
 @property (nonatomic, class) BOOL showLog;
 
-// 读取注入的数据，位于 BS_INJ_SEG, BS_INJ_SECT 处
-+ (NSArray *)loadInjectData;
+/// 读取注入的数据，位于 BS_INJ_SEG, BS_INJ_SECT
+/// 数据类型为 BsMachOInjectData
++ (BsMachOInjectDataResult)loadInjectData;
 
-+ (NSArray *)loadDataFromSegment:(const char *)segmentName
-                         section:(const char *)sectionName;
++ (BsMachOInjectDataResult)loadDataFromSegment:(const char *)segmentName
+                                       section:(const char *)sectionName;
 
-+ (NSArray *)loadDataByFrameworkNames:(NSArray *)frameworkNames
-                              segment:(const char *)segmentName
-                              section:(const char *)sectionName;
++ (BsMachOInjectDataResult)loadDataByFrameworkNames:(NSArray<NSString *> *)frameworkNames
+                                            segment:(const char *)segmentName
+                                            section:(const char *)sectionName;
 
 @end
 
