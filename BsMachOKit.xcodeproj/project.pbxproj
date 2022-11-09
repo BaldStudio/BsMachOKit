@@ -18,7 +18,6 @@
 		D200ACD628F8181700B43F52 /* BsMachODataLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = D200ACD428F8181600B43F52 /* BsMachODataLoader.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D200ACD728F8181700B43F52 /* BsMachODataLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = D200ACD528F8181700B43F52 /* BsMachODataLoader.m */; };
 		D200ACDC28F903FB00B43F52 /* BsMachOKitDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = D200ACDA28F903FB00B43F52 /* BsMachOKitDefines.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		D200ACDD28F903FB00B43F52 /* BsMachOKitDefines.m in Sources */ = {isa = PBXBuildFile; fileRef = D200ACDB28F903FB00B43F52 /* BsMachOKitDefines.m */; };
 		D23FF0D025AD9B5200D755D9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D23FF0CE25AD9B5200D755D9 /* Main.storyboard */; };
 		D23FF0D225AD9B5500D755D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D23FF0D125AD9B5500D755D9 /* Assets.xcassets */; };
 		D23FF0D525AD9B5500D755D9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D23FF0D325AD9B5500D755D9 /* LaunchScreen.storyboard */; };
@@ -62,7 +61,6 @@
 		D200ACD428F8181600B43F52 /* BsMachODataLoader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BsMachODataLoader.h; sourceTree = "<group>"; };
 		D200ACD528F8181700B43F52 /* BsMachODataLoader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BsMachODataLoader.m; sourceTree = "<group>"; };
 		D200ACDA28F903FB00B43F52 /* BsMachOKitDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BsMachOKitDefines.h; sourceTree = "<group>"; };
-		D200ACDB28F903FB00B43F52 /* BsMachOKitDefines.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BsMachOKitDefines.m; sourceTree = "<group>"; };
 		D23FF0C625AD9B5200D755D9 /* BsMachOKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BsMachOKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D23FF0CF25AD9B5200D755D9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D23FF0D125AD9B5500D755D9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -200,7 +198,6 @@
 			children = (
 				D27A8A982520AEAC006A6125 /* BsMachOKit.h */,
 				D200ACDA28F903FB00B43F52 /* BsMachOKitDefines.h */,
-				D200ACDB28F903FB00B43F52 /* BsMachOKitDefines.m */,
 				D200ACD428F8181600B43F52 /* BsMachODataLoader.h */,
 				D200ACD528F8181700B43F52 /* BsMachODataLoader.m */,
 			);
@@ -457,7 +454,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D27A8A992520AEAC006A6125 /* BsMachOKit.h in Sources */,
-				D200ACDD28F903FB00B43F52 /* BsMachOKitDefines.m in Sources */,
 				D200ACD728F8181700B43F52 /* BsMachODataLoader.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

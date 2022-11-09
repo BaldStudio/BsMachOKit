@@ -112,13 +112,13 @@
     return result.copy;
 }
 
-static BOOL _showLog = NO;
+static BOOL __showLog = NO;
 + (void)setShowLog:(BOOL)showLog {
-    _showLog = showLog;
+    __showLog = showLog;
 }
 
 + (BOOL)showLog {
-    return _showLog;
+    return __showLog;
 }
 
 + (void)print:(NSString *)log, ... {
