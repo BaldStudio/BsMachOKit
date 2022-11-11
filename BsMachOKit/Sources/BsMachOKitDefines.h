@@ -10,6 +10,11 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+// 日志等开关
+#ifndef BS_MACHO_DEBUG
+#define BS_MACHO_DEBUG 0
+#endif
+
 #pragma mark-  *** Injector ***
 
 #ifndef BS_INJ_SEG

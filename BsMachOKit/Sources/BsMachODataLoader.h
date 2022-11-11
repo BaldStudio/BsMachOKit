@@ -30,8 +30,6 @@ typedef NSArray<BsMachOInjectDataType> * BsMachOInjectDataResult;
 
 @interface BsMachODataLoader : NSObject
 
-@property (nonatomic, class) BOOL showLog;
-
 /// 读取注入的数据，位于 BS_INJ_SEG, BS_INJ_SECT
 /// 数据类型为 BsMachOInjectData
 + (BsMachOInjectDataResult)loadInjectData;

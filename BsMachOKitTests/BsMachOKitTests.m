@@ -17,9 +17,7 @@ bs_macho_inject(q, "1");
 
 @implementation BsMachOKitTests
 
-- (void)testLoadInjectData {
-    BsMachODataLoader.showLog = YES;
-    
+- (void)testLoadInjectData {    
     NSArray *data = [BsMachODataLoader loadInjectData];
     XCTAssertTrue(data.count == 1);
     XCTAssertTrue([data.firstObject isKindOfClass:NSDictionary.class]);

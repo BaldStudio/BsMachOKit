@@ -11,6 +11,13 @@
 
 #include <mach-o/getsect.h>
 
+#if BS_MACHO_DEBUG
+#define BS_MACHO_DLOG(FORMAT, ...) \
+NSLog(@"[BsMachODataLoader] %@", [NSString stringWithFormat:FORMAT, ##__VA_ARGS__])
+#else
+#define BS_MACHO_DLOG(FORMAT, ...)
+#endif
+
 @implementation BsMachODataLoader
 
 + (NSArray *)loadInjectData {
@@ -24,51 +31,21 @@
     NSMutableArray *frameworkNames = [NSMutableArray array];
         
     // 通过主二进制文件，找静态库的注入数据
-    {
-        NSString *name = NSBundle.mainBundle.executablePath.lastPathComponent;
-        if (name.length) {
-            [frameworkNames addObject:name];
-        }
-        else {
-            [self print:@"Load Main Bundle MachO Error"];
-        }
+    NSString *mainExecute = NSBundle.mainBundle.executablePath.lastPathComponent;
+    if (mainExecute.length) {
+        [frameworkNames addObject:mainExecute];
     }
-    
-    NSFileManager *fm = NSFileManager.defaultManager;
+    else {
+        BS_MACHO_DLOG(@"Load Main Bundle MachO Error");
+    }
 
     // Frameworks
-    {
-        NSString *path = NSBundle.mainBundle.privateFrameworksPath;
-        NSError *error;
-        NSArray *contents = [fm contentsOfDirectoryAtPath:path
-                                                    error:&error];
-        if (error) {
-            [self print:@"Load Frameworks MachO Error: %@", error.localizedFailureReason];
-        }
-        else {
-            for (NSString *file in contents) {
-                [frameworkNames addObject:file.stringByDeletingPathExtension];
-            }
-        }
-    }
-    
+    [frameworkNames addObjectsFromArray:
+         [self fileNamesAtPath:NSBundle.mainBundle.privateFrameworksPath]];
+
     // Plugins
-    {
-        NSString *path = NSBundle.mainBundle.builtInPlugInsPath;
-        if ([fm fileExistsAtPath:path]) {
-            NSError *error;
-            NSArray *contents = [fm contentsOfDirectoryAtPath:path
-                                                        error:&error];
-            if (error) {
-                [self print:@"Load Plugins MachO Error: %@", error.localizedFailureReason];
-            }
-            else {
-                for (NSString *file in contents) {
-                    [frameworkNames addObject:file.stringByDeletingPathExtension];
-                }
-            }
-        }
-    }
+    [frameworkNames addObjectsFromArray:
+         [self fileNamesAtPath:NSBundle.mainBundle.builtInPlugInsPath]];
     
     return [self loadDataByFrameworkNames:frameworkNames
                                   segment:segmentName
@@ -78,7 +55,7 @@
 + (NSArray *)loadDataByFrameworkNames:(NSArray *)frameworkNames
                               segment:(const char *)segmentName
                               section:(const char *)sectionName {
-    [self print:@"Prepare loading frameworks: %@", frameworkNames];
+    BS_MACHO_DLOG(@"Prepare loading frameworks: %@", frameworkNames);
 
     NSMutableArray *result = [NSMutableArray array];
 
@@ -89,7 +66,7 @@
                                                                sectionName,
                                                                &size);
         if (mem == NULL) {
-            [self print:@"Skip load for framework: %@", name];
+            BS_MACHO_DLOG(@"Skip load for framework: %@", name);
             continue;
         }
         
@@ -103,7 +80,7 @@
                 [result addObject:@{key: value}];
             }
             else {
-                [self print:@"Skip parse for framework: %@, at: %lu", name, i];
+                BS_MACHO_DLOG(@"Skip parse for framework: %@, at: %lu", name, i);
             }
         }
     }
@@ -111,19 +88,25 @@
     return result.copy;
 }
 
-static BOOL __showLog = NO;
-+ (void)setShowLog:(BOOL)showLog {
-    __showLog = showLog;
-}
-
-+ (BOOL)showLog {
-    return __showLog;
-}
-
-+ (void)print:(NSString *)log, ... {
-    if (self.showLog) {
-        NSLog(@"[%@] %@", NSStringFromClass(self), log);
++ (NSArray *)fileNamesAtPath:(NSString *)path {
+    NSFileManager *fm = NSFileManager.defaultManager;
+    NSMutableArray *fileNames = [NSMutableArray array];
+    if (![fm fileExistsAtPath:path]) {
+        return fileNames.copy;
     }
+    
+    NSError *error;
+    NSArray *contents = [fm contentsOfDirectoryAtPath:path
+                                                error:&error];
+    if (error) {
+        BS_MACHO_DLOG(@"Load Files Error: %@", error.localizedFailureReason);
+        return fileNames.copy;
+    }
+
+    for (NSString *file in contents) {
+        [fileNames addObject:file.stringByDeletingPathExtension];
+    }
+    return fileNames.copy;
 }
 
 @end
