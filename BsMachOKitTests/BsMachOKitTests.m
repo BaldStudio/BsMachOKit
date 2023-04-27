@@ -22,12 +22,12 @@ bs_macho_inject(q, "1");
     XCTAssertTrue(data.count == 1);
     XCTAssertTrue([data.firstObject isKindOfClass:NSDictionary.class]);
     
-    NSDictionary *kv = data.firstObject;
-    XCTAssertTrue(kv.allKeys.count == 1);
-    XCTAssertTrue(kv.allValues.count == 1);
+    NSDictionary *dict = data.firstObject;
+    XCTAssertTrue(dict.allKeys.count == 1);
+    XCTAssertTrue(dict.allValues.count == 1);
 
-    XCTAssertTrue([kv.allKeys.firstObject isEqualToString:@"q"]);
-    XCTAssertTrue([kv.allValues.firstObject isEqualToString:@"1"]);
+    XCTAssertTrue([dict.allKeys.firstObject isEqualToString:@"q"]);
+    XCTAssertTrue([dict.allValues.firstObject isEqualToString:@"1"]);
 }
 
 
