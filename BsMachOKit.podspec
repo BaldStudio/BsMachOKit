@@ -2,8 +2,8 @@ Pod::Spec.new do |s|
 
   s.name         = 'BsMachOKit'
   s.version      = '1.0.0'
-  s.summary      = '对 Mach-O 自定义段的数据读写库'
-  s.homepage     = 'https://github.com/BaldStudio/BsMachOKit.git'
+  s.summary      = '对 Mach-O 自定义段的数据读写'
+  s.homepage     = 'https://github.com/BaldStudio'
   s.license      = { :type => 'MIT', :text => 'LICENSE' }
   s.author       = { 'crzorz' => 'crzorz@outlook.com' }
   s.source       = { :git => 'https://github.com/BaldStudio/BsMachOKit.git', :tag => s.version.to_s }
