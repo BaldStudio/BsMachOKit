@@ -1,7 +1,6 @@
 source 'https://github.com/CocoaPods/Specs.git'
-source 'https://crzorz@bitbucket.org/crzorz/privatepodspecs.git'
 
-platform :ios, '13.0'
+platform :ios, '9.0'
 
 use_frameworks!
 
