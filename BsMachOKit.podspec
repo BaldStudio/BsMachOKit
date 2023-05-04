@@ -2,7 +2,7 @@ Pod::Spec.new do |s|
 
   s.name         = 'BsMachOKit'
   s.version      = '1.0.0'
-  s.summary      = '对 Mach-O 自定义段的数据读写'
+  s.summary      = '对 Mach-O 特定 Segment 和 Section 的数据读写'
   s.homepage     = 'https://github.com/BaldStudio'
   s.license      = { :type => 'MIT', :text => 'LICENSE' }
   s.author       = { 'crzorz' => 'crzorz@outlook.com' }
