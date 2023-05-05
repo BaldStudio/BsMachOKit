@@ -41,7 +41,7 @@ static const BsMachOInjectData __bs_macho_##_key_##_data = { \
 }
 
 #define BS_MACHO_INJECT(key, value) \
-BS_MACHO_INJECT(BS_INJ_SEG, BS_INJ_SECT, key, value)
+BS_MACHO_INJECT_KV(BS_INJ_SEG, BS_INJ_SECT, key, value)
 
 
 NS_ASSUME_NONNULL_END

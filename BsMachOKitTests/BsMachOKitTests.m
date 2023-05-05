@@ -9,7 +9,7 @@
 #import <XCTest/XCTest.h>
 #import <BsMachOKit/BsMachOKit.h>
 
-bs_macho_inject(q, "1");
+BS_MACHO_INJECT(q, "1");
 
 @interface BsMachOKitTests : XCTestCase
 
